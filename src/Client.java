@@ -14,5 +14,8 @@ public class Client {
         return outputSocket;
     }
 
+    public String getNaam(){
+        return naam;
+    }
 
 }

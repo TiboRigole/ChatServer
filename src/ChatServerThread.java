@@ -41,21 +41,26 @@ public class ChatServerThread extends Thread{
 
 
             //nu kan ik de user toevoegen aan de databank
-            DataBank dataBank = new DataBank(); //problemen, misschien moet dit een singleton zin
+            Main.databank.addClient(out,naam);
 
-            dataBank.addClient(out,naam);
-            System.out.println("user met naam: "+naam+"toegevoegd aan de lijst met users");
+            System.out.println("user met naam: "+naam+" toegevoegd aan de lijst met users");
 
             while((inputLine = in.readLine()) != null) {
 
-                System.out.println("boodschap:"+inputLine+" ontvangen, van "+naam);
+                System.out.println("boodschap: "+inputLine+" ontvangen, van "+naam);
 
                 outputLine = naam + ": "+inputLine;
 
-                ArrayList<Client> aantalUsersActief = dataBank.getAlleUsers();
+                System.out.println("print eens alle users");
+                ArrayList<Client> aantalUsersActief = Main.databank.getAlleUsers();
+                for(Client c : aantalUsersActief){
+                    System.out.print(c.getNaam()+", ");
+                    System.out.println();
+                }
 
                 for(Client c : aantalUsersActief){
-                    c.getOut().print(outputLine);
+                    c.getOut().println(outputLine);
+                    System.out.println("verzonden naar "+ c.getNaam());
                 }
 
 

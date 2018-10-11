@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class Main {
 
+    public static DataBank databank;
+
     public static void main(String[] args){
 
-
+        databank = new DataBank();
         System.out.println("test");
 
         //vast poortnummer
